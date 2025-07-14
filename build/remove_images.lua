@@ -1,0 +1,3 @@
+function Image()
+    return {}
+end
