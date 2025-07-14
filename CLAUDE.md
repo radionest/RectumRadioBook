@@ -137,6 +137,14 @@ Link cause and effect explicitly:
 - Use constructions "приводит к", "вызывает", "обусловливает" to show causal relationships
 - Avoid simple enumeration of facts without indicating their relationship
 
+### Avoid Generic Statements
+Do not use generic statements that do not provide specific information, especially if they are not followed by detailed description. Examples of statements to avoid:
+- "Точное понимание анатомических особенностей прямой кишки критически важно для планирования хирургического лечения и интерпретации результатов лучевой диагностики"
+- "Данный метод имеет важное клиническое значение"
+- "Эти данные имеют большое значение для практической медицины"
+
+Instead, provide specific information with concrete details and numerical data.
+
 ## Editing Examples
 
 ### Example 1
