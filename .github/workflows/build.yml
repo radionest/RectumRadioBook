@@ -1,0 +1,47 @@
+name: Build RectumRadioBook
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc
+
+    - name: Run build script
+      run: |
+        # Удаляем интерактивную часть скрипта
+        sed -i '/read -p "Do you want to create a PDF version as well? (y\/n): "/,/^fi$/d' build.sh
+        chmod +x build.sh
+        ./build.sh
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts
+        path: |
+          build/RectumRadioBook.docx
+          build/RectumRadioBook.pdf
+          build/build.log
+        retention-days: 5
+
+    - name: Notify build status
+      if: ${{ always() }}
+      run: |
+        if [ $? -eq 0 ]; then
+          echo "✅ Build successful!"
+        else
+          echo "❌ Build failed!"
+        fi
