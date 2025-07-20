@@ -23,9 +23,9 @@ jobs:
     - name: Run build script
       run: |
         # Удаляем интерактивную часть скрипта
-        sed -i '/read -p "Do you want to create a PDF version as well? (y\/n): "/,/^fi$/d' ./build/build.sh
-        chmod +x ./build/build.sh
-        ./build/build.sh
+        sed -i '/read -p "Do you want to create a PDF version as well? (y\/n): "/,/^fi$/d' ./build/build_docx\.sh
+        chmod +x ./build/build_docx\.sh
+        ./build/build_docx\.sh
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
