@@ -1,0 +1,6 @@
+# Image processing dependencies
+lxml>=4.9.0
+Pillow>=9.0.0
+
+# For better error messages and development
+pathlib>=1.0.1
