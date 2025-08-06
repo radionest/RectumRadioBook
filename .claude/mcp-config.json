@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "local-server": {
+      "url": "http://localhost:3000/sse",
+      "disabled": false,
+      "autoApprove": [],
+      "timeout": 300
+    },
+    "zotero-mcp": {
+      "url": "http://localhost:8000/sse/",
+      "disabled": false,
+      "autoApprove": [
+        "zotero_get_collections",
+        "zotero_get_collection_items",
+        "zotero_search_items",
+        "zotero_get_item_metadata",
+        "zotero_semantic_search",
+        "zotero_get_item_fulltext",
+        "zotero_advanced_search",
+        "zotero_create_note"
+      ],
+      "timeout": 300
+    }
+  }
+}
