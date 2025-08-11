@@ -6,7 +6,7 @@ Your response should be concise, containing only the corrected version of the so
 
 ## Configuration
 
-### Default Zotero Collection
+### Bibliography Zotero Collection
 rectal_book
 
 ## References and Citations

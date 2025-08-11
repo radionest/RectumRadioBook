@@ -28,12 +28,12 @@ book:
     - part: "Стадирование рака прямой кишки"
       chapters:
         - src/Rectal-Cancer-Staging.qmd
+        - src/Rectal-Cancer-Staging/Local-Extent-Assessment.qmd
         - src/Rectal-Cancer-Staging/T-Staging.qmd
         - src/Rectal-Cancer-Staging/N-Staging.qmd
-        - src/Rectal-Cancer-Staging/Local-Extent-Assessment.qmd
-        - src/Rectal-Cancer-Staging/Circumferential-Resection-Margin-Assessment.qmd
         - src/Rectal-Cancer-Staging/Extramural-Venous-Invasion-Assessment.qmd
-    
+        - src/Rectal-Cancer-Staging/Circumferential-Resection-Margin-Assessment.qmd
+
     - src/Structured-Report-Primary-MRI-Staging.qmd
     - src/Bibliography.qmd
 
