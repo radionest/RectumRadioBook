@@ -1,0 +1,167 @@
+/* Anatomical layers */
+.mucosa {
+    fill: #ffe5b4;
+    stroke: none;
+    stroke-opacity: 1;
+    stroke-width: 0.7%;
+}
+
+.submucosa {
+    fill: #ffd4a3;
+    stroke: none;
+    stroke-opacity: 1;
+    stroke-width: 0.7%;
+}
+
+.muscularis {
+    fill: #ff8c69;
+    stroke: none;
+    stroke-opacity: 1;
+    stroke-width: 0.7%;
+}
+
+.serosa {
+    fill: #fa8072;
+    stroke: none;
+    stroke-opacity: 1;
+    stroke-width: 0.7%;
+}
+
+/* Tumor structures */
+.tumor {
+    fill: none;
+    stroke: #dc143c;
+    stroke-opacity: 1;
+    stroke-width: 0.7%;
+}
+
+.tumor_core {
+    fill: #dc143c;
+    fill-opacity: 0.7;
+    stroke: none;
+}
+
+.tumor_part {
+    fill: #ff6b6b;
+    fill-opacity: 0.5;
+    stroke: #dc143c;
+    stroke-width: 0.5%;
+}
+
+.tumor_part_2 {
+    fill: #ff5252;
+    fill-opacity: 0.5;
+    stroke: #dc143c;
+    stroke-width: 0.5%;
+}
+
+.tumor_part_3 {
+    fill: #ff3838;
+    fill-opacity: 0.5;
+    stroke: #dc143c;
+    stroke-width: 0.5%;
+}
+
+/* Lymphatic system */
+.lymph_node {
+    fill: #90ee90;
+    stroke: #228b22;
+    stroke-opacity: 1;
+    stroke-width: 0.5%;
+}
+
+.lymph_node_necrosis {
+    fill: #8b0000;
+    fill-opacity: 0.7;
+    stroke: #dc143c;
+    stroke-width: 0.5%;
+}
+
+.lymph_node_part {
+    fill: #7cfc00;
+    fill-opacity: 0.5;
+    stroke: #228b22;
+    stroke-width: 0.5%;
+}
+
+/* Vascular structures */
+.vessels {
+    fill: none;
+    stroke: #4169e1;
+    stroke-opacity: 1;
+    stroke-width: 0.5%;
+}
+
+/* Normal structures */
+.normal {
+    fill: none;
+    stroke: #32cd32;
+    stroke-opacity: 1;
+    stroke-width: 0.7%;
+    stroke-dasharray: 1,1;
+    stroke-dashoffset: 0;
+}
+
+.normal_fill {
+    fill: #32cd32;
+    fill-opacity: 0.3;
+    stroke: none;
+}
+
+/* Anatomical landmarks */
+.dentate_line {
+    fill: none;
+    stroke: #ff1493;
+    stroke-opacity: 1;
+    stroke-width: 0.7%;
+    stroke-dasharray: 3,3;
+    stroke-dashoffset: 0;
+}
+
+.sphincter {
+    fill: #ffd700;
+    fill-opacity: 0.5;
+    stroke: #ffa500;
+    stroke-width: 0.5%;
+}
+
+.peritoneum {
+    fill: none;
+    stroke: #9370db;
+    stroke-opacity: 1;
+    stroke-width: 0.5%;
+    stroke-dasharray: 2,2;
+    stroke-dashoffset: 0;
+}
+
+.muscle_1 {
+    fill: #ff7f50;
+    fill-opacity: 0.6;
+    stroke: none;
+}
+
+.muscle_2 {
+    fill: #ff6347;
+    fill-opacity: 0.6;
+    stroke: none;
+}
+
+.muscle_3 {
+    fill: #ff4500;
+    fill-opacity: 0.6;
+    stroke: none;
+}
+
+.muscle_4 {
+    fill: #ff8c00;
+    fill-opacity: 0.6;
+    stroke: none;
+}
+
+/* Default layer */
+.layer_1 {
+    fill: none;
+    stroke: #000000;
+    stroke-opacity: 1;
+    stroke-width: 0.5%;
+}

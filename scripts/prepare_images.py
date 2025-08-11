@@ -1,6 +1,8 @@
 import os
 from lxml import etree
 import subprocess
+import re
+from pathlib import Path
 
 nsmap = {
     'sodipodi': 'http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd',
@@ -13,113 +15,82 @@ nsmap = {
     }
 
 
-STYLE = {
-    # Слои стенки
-    'mucosa': {"fill":"#ffe5b4",
-              "stroke":"none",
-              "stroke-opacity":1,
-              "stroke-width":'0.7%'},
-    'submucosa': {"fill":"#ffd4a3",
-              "stroke":"none",
-              "stroke-opacity":1,
-              "stroke-width":'0.7%'},
-    'muscularis': {"fill":"#ff8c69",
-              "stroke":"none",
-              "stroke-opacity":1,
-              "stroke-width":'0.7%'},
-    'serosa': {"fill":"#fa8072",
-              "stroke":"none",
-              "stroke-opacity":1,
-              "stroke-width":'0.7%'},
+def parse_css_file(css_path):
+    """Parse CSS file and extract styles into a dictionary"""
+    styles = {}
     
-    # Опухолевые структуры
-    'tumor': {"fill":"none",
-              "stroke":"#dc143c",
-              "stroke-opacity":1,
-              "stroke-width":'0.7%'},
-    'tumor_core': {"fill":"#dc143c",
-              "fill-opacity":0.7,
-              "stroke":"none"},
-    'tumor_part': {"fill":"#ff6b6b",
-              "fill-opacity":0.5,
-              "stroke":"#dc143c",
-              "stroke-width":'0.5%'},
-    'tumor_part_2': {"fill":"#ff5252",
-              "fill-opacity":0.5,
-              "stroke":"#dc143c",
-              "stroke-width":'0.5%'},
-    'tumor_part_3': {"fill":"#ff3838",
-              "fill-opacity":0.5,
-              "stroke":"#dc143c",
-              "stroke-width":'0.5%'},
+    if not os.path.exists(css_path):
+        print(f"Warning: CSS file not found at {css_path}")
+        return styles
     
-    # Лимфатическая система
-    'lymph_node': {"fill":"#90ee90",
-              "stroke":"#228b22",
-              "stroke-opacity":1,
-              "stroke-width":'0.5%'},
-    'lymph_node_necrosis': {"fill":"#8b0000",
-              "fill-opacity":0.7,
-              "stroke":"#dc143c",
-              "stroke-width":'0.5%'},
-    'lymph_node_part': {"fill":"#7cfc00",
-              "fill-opacity":0.5,
-              "stroke":"#228b22",
-              "stroke-width":'0.5%'},
+    with open(css_path, 'r', encoding='utf-8') as f:
+        css_content = f.read()
     
-    # Сосудистые структуры
-    'vessels': {"fill":"none",
-              "stroke":"#4169e1",
-              "stroke-opacity":1,
-              "stroke-width":'0.5%'},
+    # Remove comments
+    css_content = re.sub(r'/\*.*?\*/', '', css_content, flags=re.DOTALL)
     
-    # Нормальные структуры
-    'normal': {"fill":"none",
-              "stroke":"#32cd32",
-              "stroke-opacity":1,
-              "stroke-width":'0.7%',
-              "stroke-dasharray":[1,1],
-              "stroke-dashoffset":0},
-    'normal_fill': {"fill":"#32cd32",
-              "fill-opacity":0.3,
-              "stroke":"none"},
+    # Pattern to match CSS rules
+    pattern = r'\.([a-zA-Z_][a-zA-Z0-9_]*)\s*\{([^}]+)\}'
     
-    # Анатомические ориентиры
-    'dentate_line': {"fill":"none",
-              "stroke":"#ff1493",
-              "stroke-opacity":1,
-              "stroke-width":'0.7%',
-              "stroke-dasharray":[3,3],
-              "stroke-dashoffset":0},
-    'sphincter': {"fill":"#ffd700",
-              "fill-opacity":0.5,
-              "stroke":"#ffa500",
-              "stroke-width":'0.5%'},
-    'peritoneum': {"fill":"none",
-              "stroke":"#9370db",
-              "stroke-opacity":1,
-              "stroke-width":'0.5%',
-              "stroke-dasharray":[2,2],
-              "stroke-dashoffset":0},
-    'muscle_1': {"fill":"#ff7f50",
-              "fill-opacity":0.6,
-              "stroke":"none"},
-    'muscle_2': {"fill":"#ff6347",
-              "fill-opacity":0.6,
-              "stroke":"none"},
-    'muscle_3': {"fill":"#ff4500",
-              "fill-opacity":0.6,
-              "stroke":"none"},
-    'muscle_4': {"fill":"#ff8c00",
-              "fill-opacity":0.6,
-              "stroke":"none"},
+    for match in re.finditer(pattern, css_content):
+        class_name = match.group(1)
+        properties = match.group(2)
+        
+        style_dict = {}
+        
+        # Parse individual properties
+        for prop_match in re.finditer(r'([a-zA-Z-]+)\s*:\s*([^;]+);?', properties):
+            prop_name = prop_match.group(1).strip()
+            prop_value = prop_match.group(2).strip()
+            
+            # Handle stroke-dasharray special case
+            if prop_name == 'stroke-dasharray':
+                # Convert "1,1" to [1,1]
+                values = prop_value.split(',')
+                try:
+                    style_dict[prop_name] = [float(v.strip()) for v in values]
+                except ValueError:
+                    style_dict[prop_name] = prop_value
+            # Handle numeric properties
+            elif prop_name in ['stroke-opacity', 'fill-opacity', 'stroke-dashoffset']:
+                try:
+                    style_dict[prop_name] = float(prop_value)
+                except ValueError:
+                    style_dict[prop_name] = prop_value
+            else:
+                style_dict[prop_name] = prop_value
+        
+        # Map class names to the expected format
+        # Convert layer_1 to 'Слой 1' for backward compatibility
+        if class_name == 'layer_1':
+            styles['Слой 1'] = style_dict
+        else:
+            styles[class_name] = style_dict
     
-    # Default layer
-    'Слой 1': {"fill":"none",
-              "stroke":"#000000",
-              "stroke-opacity":1,
-              "stroke-width":'0.5%'}
-}
+    return styles
+
+
+def load_styles(style_file='annotation.css'):
+    """Load styles from CSS file in styles directory"""
+    script_dir = Path(__file__).parent
+    project_root = script_dir.parent
+    css_path = project_root / 'styles' / style_file
+    
+    styles = parse_css_file(css_path)
+    
+    if not styles:
+        print(f"Warning: No styles loaded from {css_path}, using default styles")
+        # Fallback to default styles
+        return {
+            'mucosa': {"fill":"#ffe5b4", "stroke":"none", "stroke-opacity":1, "stroke-width":'0.7%'},
+            'Слой 1': {"fill":"none", "stroke":"#000000", "stroke-opacity":1, "stroke-width":'0.5%'}
+        }
+    
+    return styles
+
+
+# Load styles from CSS file
+STYLE = load_styles()
 
 def format_style_xml(style_dict):
     output_string = ""
@@ -155,7 +126,7 @@ def apply_style_to_file(file_path: str, output_postfix='styled'):
     styled_elements = 0
     
     # Find all path elements
-    for path_object in xml_model.findall('//svg:path',namespaces=nsmap):
+    for path_object in xml_model.findall('.//svg:path',namespaces=nsmap):
         layer_name = get_layer_name(path_object)
         if layer_name and layer_name in STYLE:
             path_object.attrib["style"] = format_style_xml(STYLE[layer_name])
@@ -166,7 +137,7 @@ def apply_style_to_file(file_path: str, output_postfix='styled'):
     
     # Also process circles, ellipses, and rects if present
     for shape_type in ['circle', 'ellipse', 'rect']:
-        for shape_object in xml_model.findall(f'//svg:{shape_type}',namespaces=nsmap):
+        for shape_object in xml_model.findall(f'.//svg:{shape_type}',namespaces=nsmap):
             layer_name = get_layer_name(shape_object)
             if layer_name and layer_name in STYLE:
                 shape_object.attrib["style"] = format_style_xml(STYLE[layer_name])
@@ -174,7 +145,8 @@ def apply_style_to_file(file_path: str, output_postfix='styled'):
     
     print(f"Styled {styled_elements} elements in {file_path}")
     
-    # Create output path
+    # Create output path with absolute path
+    file_path = os.path.abspath(file_path)
     base_name = os.path.basename(file_path).rsplit('.', 1)[0]
     output_filename = f"{base_name}_{output_postfix}.svg"
     output_filepath = os.path.join(os.path.dirname(file_path), output_filename)
@@ -187,6 +159,9 @@ def apply_style_to_file(file_path: str, output_postfix='styled'):
 def export_svg_to_png(file_path, output_filename=None, dpi=300):
     """Export SVG file to PNG using Inkscape"""
     inkscape_executable = 'inkscape'  # Use system inkscape
+    
+    # Ensure absolute path
+    file_path = os.path.abspath(file_path)
     
     if output_filename is None:
         base_name = os.path.basename(file_path).rsplit('.', 1)[0]
@@ -212,6 +187,8 @@ def export_svg_element(file_path, img_id, output_filename, filetype='png', dpi=3
     """Export specific element from SVG by ID"""
     inkscape_executable = 'inkscape'
     
+    # Ensure absolute path
+    file_path = os.path.abspath(file_path)
     output_path = os.path.dirname(file_path)
 
     # Export only the specified element
@@ -242,7 +219,7 @@ def export_svg_element(file_path, img_id, output_filename, filetype='png', dpi=3
 def svg_to_png_by_images(file_path):
     """Export each embedded image from SVG to separate PNG"""
     xml_model = etree.parse(file_path)   
-    for image_object in xml_model.findall('//svg:image',namespaces=nsmap):
+    for image_object in xml_model.findall('.//svg:image',namespaces=nsmap):
         try:
             image_name = image_object.attrib[f"{{{nsmap['inkscape']}}}label"]
         except KeyError:
@@ -286,10 +263,24 @@ def update_all_annotations(base_folder):
 
 
 if __name__ == "__main__":
-    # Process all annotation files in the img directory
-    img_folder = './img'
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Apply styles to SVG annotation files')
+    parser.add_argument('--style', default='annotation.css', 
+                        help='CSS file name in styles directory (default: annotation.css)')
+    parser.add_argument('--folder', default='./img', 
+                        help='Folder to process (default: ./img)')
+    args = parser.parse_args()
+    
+    # Load specified style file
+    STYLE = load_styles(args.style)
+    
+    # Process all annotation files in the specified directory
+    img_folder = args.folder
     
     if os.path.exists(img_folder):
+        print(f"Using styles from: styles/{args.style}")
+        print(f"Processing folder: {img_folder}")
         update_all_annotations(img_folder)
     else:
         print(f"Image folder not found: {img_folder}")
