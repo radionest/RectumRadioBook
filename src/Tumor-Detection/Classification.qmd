@@ -75,10 +75,11 @@
 
 Этот подтип, ранее описанный как «ворсинчатая аденокарцинома» и «инвазивная папиллярная аденокарцинома», определяется как инвазивная аденокарцинома, в которой ≥ 50% инвазивных областей имеют аденомоподобный вид с ворсинчатыми структурами, с low grade дисплазией эпителия. Наблюдается минимальная десмопластическая реакция стромы и "отодвигающий" характер роста (pushing growth pattern). Частота распространения от 3% до 9%. Этот подтип характеризуется трудностями в установлении диагноза инвазивного компонента по биоптатам, высокой частотой мутаций KRAS и благоприятным прогнозом.
 
-:::{id='fig:adenoma-like-adenocarcinoma'}
-![Аденомоподобная аденокарцинома](/img/classification/adenoma-like/image70.png){#fig:adenoma-like-adenocarcinoma_A}
-![Аденомоподобная аденокарцинома](/img/classification/adenoma-like/image65.png){#fig:adenoma-like-adenocarcinoma_B}
-![Аденомоподобная аденокарцинома](/img/classification/adenoma-like/image66.png){#fig:adenoma-like-adenocarcinoma_C}
+:::{#fig:adenoma-like-adenocarcinoma}
+![Аденомоподобная аденокарцинома](/img/classification/adenoma-like/image70.png){#fig:adenoma-like-adenocarcinoma-1 width=32%}
+![Аденомоподобная аденокарцинома](/img/classification/adenoma-like/image65.png){#fig:adenoma-like-adenocarcinoma-2 width=32%}
+![Аденомоподобная аденокарцинома](/img/classification/adenoma-like/image66.png){#fig:adenoma-like-adenocarcinoma-3 width=32%}
+
 Аденомоподобная ("adenoma-like") аденокарцинома: **А-В** - различные гистологические препараты.
 :::
 
