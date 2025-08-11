@@ -33,3 +33,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+img/anatomy/fig1/annotation_mri_styled.png
+img/anatomy/fig1/annotation_mri_styled.svg
+img/anatomy/fig1/annotation_styled.png
+img/anatomy/fig1/annotation_styled.svg
+img/anatomy/fig1/image1_with_context.png
