@@ -1,0 +1,55 @@
+# Configuration for prepare_images.py
+
+[inkscape]
+executable = "inkscape"
+default_dpi = 300
+default_export_format = "png"
+
+[processing]
+# Default style file to use
+default_style_file = "annotation.css"
+
+# Default folder to process
+default_folder = "./img"
+
+# SVG file patterns to match
+annotation_patterns = [
+    "annotation.svg",
+    "annotation_mri.svg", 
+    "annotation_ct.svg",
+    "annotatiom_mri.svg"
+]
+
+# Postfix for styled files
+styled_postfix = "styled"
+
+# Suffix for annotated PNG exports
+annotated_suffix = "annotated"
+
+[export]
+# Export options for SVG element export
+export_with_context = true
+export_id_only = true
+
+[style_defaults]
+# Default styles if CSS file is not found
+[style_defaults.mucosa]
+fill = "#ffe5b4"
+stroke = "none"
+stroke-opacity = 1.0
+stroke-width = "0.7%"
+
+[style_defaults."Слой 1"]
+fill = "none"
+stroke = "#000000"
+stroke-opacity = 1.0
+stroke-width = "0.5%"
+
+[namespaces]
+sodipodi = "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+cc = "http://web.resource.org/cc/"
+svg = "http://www.w3.org/2000/svg"
+dc = "http://purl.org/dc/elements/1.1/"
+xlink = "http://www.w3.org/1999/xlink"
+rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+inkscape = "http://www.inkscape.org/namespaces/inkscape"

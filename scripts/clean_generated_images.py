@@ -14,7 +14,8 @@ def clean_generated_files():
     patterns_to_remove = [
         '*_styled.svg',
         '*_styled.png',
-        '*_styled_with_context.png',
+        '*with_context.png',
+        '*with_context.png',
         'annotation_styled.png',
         'annotation_mri_styled.png',
         'annotation_ct_styled.png',
