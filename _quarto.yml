@@ -1,0 +1,60 @@
+project:
+  type: book
+  output-dir: _book
+  execute-dir: project
+  pre-render: 
+    - .venv/bin/python scripts/prepare_images_prerender.py
+  post-render:
+    - .venv/bin/python scripts/clean_generated_images.py
+book:
+  title: "Учебное пособие по лучевой диагностике рака прямой кишки"
+  author: "Автор"
+  date: today
+  language: ru
+  
+  chapters:
+    - index.qmd
+    - part: "Основы"
+      chapters:
+        - src/Introduction.qmd
+        - src/Rectum-Anatomy.qmd
+        - src/Research-Methodology.qmd
+    
+    - part: "Выявление опухоли"
+      chapters:
+        - src/Tumor-Detection.qmd
+        - src/Tumor-Detection/Classification.qmd
+    
+    - part: "Стадирование рака прямой кишки"
+      chapters:
+        - src/Rectal-Cancer-Staging.qmd
+        - src/Rectal-Cancer-Staging/T-Staging.qmd
+        - src/Rectal-Cancer-Staging/N-Staging.qmd
+        - src/Rectal-Cancer-Staging/Local-Extent-Assessment.qmd
+        - src/Rectal-Cancer-Staging/Circumferential-Resection-Margin-Assessment.qmd
+        - src/Rectal-Cancer-Staging/Extramural-Venous-Invasion-Assessment.qmd
+    
+    - src/Structured-Report-Primary-MRI-Staging.qmd
+    - src/Bibliography.qmd
+
+bibliography: references.bib
+csl: vancouver.csl
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    code-summary: "Показать код"
+    lang: ru
+    
+  docx:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    reference-doc: custom-reference-doc.docx
+    lang: ru
+
+lang: ru
