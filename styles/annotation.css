@@ -165,3 +165,14 @@
     stroke-opacity: 1;
     stroke-width: 0.5%;
 }
+
+.orientation_of_slices{
+    stroke-dasharray: 50% 50%;
+    stroke: #ffd700;
+}
+
+.peritoneum
+.mesorectal_fascia
+{
+    stroke: #90ee90;
+}

@@ -154,17 +154,12 @@ def svg_to_png_by_images(svg_path: Path, output_dir: Path, nsmap, config):
         )
         print(f"Exported image: {image_name} (id: {image_object.attrib['id']})")
 
-def copy_original_images(source_dir: Path, output_dir: Path):
-    """Copy original images (png, jpg) to output directory"""
-    for img_file in source_dir.glob('*.png'):
-        if 'styled' not in img_file.name:
-            shutil.copy2(img_file, output_dir / img_file.name)
-    
-    for img_file in source_dir.glob('*.jpg'):
-        shutil.copy2(img_file, output_dir / img_file.name)
-    
-    for img_file in source_dir.glob('*.jpeg'):
-        shutil.copy2(img_file, output_dir / img_file.name)
+def copy_annotated_to_source(output_dir: Path, source_dir: Path):
+    """Copy generated annotated images back to source directory"""
+    for annotated_file in output_dir.glob('*_annotated.png'):
+        dest_path = source_dir / annotated_file.name
+        shutil.copy2(annotated_file, dest_path)
+        print(f"Copied to source: {dest_path}")
 
 def process_annotation_file(svg_file_path: Path, relative_path: Path, config, styles):
     """Process a single annotation SVG file and save to output directory"""
@@ -172,9 +167,6 @@ def process_annotation_file(svg_file_path: Path, relative_path: Path, config, st
     
     # Create output directory structure
     output_dir = ensure_output_dir(relative_path)
-    
-    # Copy original images from the same directory
-    copy_original_images(svg_file_path.parent, output_dir)
     
     # Apply styles and save to output directory
     nsmap = config.get_nsmap()
@@ -190,6 +182,9 @@ def process_annotation_file(svg_file_path: Path, relative_path: Path, config, st
                          inkscape_executable=config.inkscape.executable,
                          dpi=config.inkscape.default_dpi,
                          suffix=config.processing.annotated_suffix)
+    
+    # Copy generated annotated images back to source directory
+    copy_annotated_to_source(output_dir, svg_file_path.parent)
     
     # Also copy the original SVG for reference
     shutil.copy2(svg_file_path, output_dir / svg_file_path.name)
