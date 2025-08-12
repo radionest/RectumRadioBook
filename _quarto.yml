@@ -8,6 +8,10 @@ project:
     - .venv/bin/python scripts/clean_generated_images.py
 filters:
   - /home/nest/.local/bin/quarto_tools/pandoc-crossref
+
+crossref:
+  fig-title: "Рисунок"
+  fig-prefix: "рис."
 book:
   title: "Учебное пособие по лучевой диагностике рака прямой кишки"
   author: "Автор"
