@@ -6,6 +6,8 @@ project:
     - .venv/bin/python scripts/prepare_images_prerender.py
   post-render:
     - .venv/bin/python scripts/clean_generated_images.py
+filters:
+  - /home/nest/.local/bin/quarto_tools/pandoc-crossref
 book:
   title: "Учебное пособие по лучевой диагностике рака прямой кишки"
   author: "Автор"
@@ -16,14 +18,17 @@ book:
     - index.qmd
     - part: "Основы"
       chapters:
+        - src/Abbrevations.qmd
         - src/Introduction.qmd
         - src/Rectum-Anatomy.qmd
-        - src/Research-Methodology.qmd
+        - src/Scan-Methodology.qmd
     
     - part: "Выявление опухоли"
       chapters:
         - src/Tumor-Detection.qmd
         - src/Tumor-Detection/Classification.qmd
+        - src/Tumor-Detection/MRI.qmd
+    
     
     - part: "Стадирование рака прямой кишки"
       chapters:

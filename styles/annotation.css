@@ -3,28 +3,28 @@
     fill: #ffe5b4;
     stroke: none;
     stroke-opacity: 1;
-    stroke-width: 0.7%;
+    stroke-width: 3px;
 }
 
 .submucosa {
     fill: #ffd4a3;
     stroke: none;
     stroke-opacity: 1;
-    stroke-width: 0.7%;
+    stroke-width: 3px;
 }
 
 .muscularis {
     fill: #ff8c69;
     stroke: none;
     stroke-opacity: 1;
-    stroke-width: 0.7%;
+    stroke-width: 3px;
 }
 
 .serosa {
     fill: #fa8072;
     stroke: none;
     stroke-opacity: 1;
-    stroke-width: 0.7%;
+    stroke-width: 3px;
 }
 
 /* Tumor structures */
@@ -32,7 +32,7 @@
     fill: none;
     stroke: #dc143c;
     stroke-opacity: 1;
-    stroke-width: 0.7%;
+    stroke-width: 3px;
 }
 
 .tumor_core {
@@ -45,21 +45,21 @@
     fill: #ff6b6b;
     fill-opacity: 0.5;
     stroke: #dc143c;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
 }
 
 .tumor_part_2 {
     fill: #ff5252;
     fill-opacity: 0.5;
     stroke: #dc143c;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
 }
 
 .tumor_part_3 {
     fill: #ff3838;
     fill-opacity: 0.5;
     stroke: #dc143c;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
 }
 
 /* Lymphatic system */
@@ -67,21 +67,21 @@
     fill: #90ee90;
     stroke: #228b22;
     stroke-opacity: 1;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
 }
 
 .lymph_node_necrosis {
     fill: #8b0000;
     fill-opacity: 0.7;
     stroke: #dc143c;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
 }
 
 .lymph_node_part {
     fill: #7cfc00;
     fill-opacity: 0.5;
     stroke: #228b22;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
 }
 
 /* Vascular structures */
@@ -89,7 +89,7 @@
     fill: none;
     stroke: #4169e1;
     stroke-opacity: 1;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
 }
 
 /* Normal structures */
@@ -97,7 +97,7 @@
     fill: none;
     stroke: #32cd32;
     stroke-opacity: 1;
-    stroke-width: 0.7%;
+    stroke-width: 3px;
     stroke-dasharray: 1,1;
     stroke-dashoffset: 0;
 }
@@ -113,7 +113,7 @@
     fill: none;
     stroke: #ff1493;
     stroke-opacity: 1;
-    stroke-width: 0.7%;
+    stroke-width: 3px;
     stroke-dasharray: 3,3;
     stroke-dashoffset: 0;
 }
@@ -122,14 +122,14 @@
     fill: #ffd700;
     fill-opacity: 0.5;
     stroke: #ffa500;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
 }
 
 .peritoneum {
     fill: none;
     stroke: #9370db;
     stroke-opacity: 1;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
     stroke-dasharray: 2,2;
     stroke-dashoffset: 0;
 }
@@ -163,16 +163,21 @@
     fill: none;
     stroke: #000000;
     stroke-opacity: 1;
-    stroke-width: 0.5%;
+    stroke-width: 3px;
 }
 
 .orientation_of_slices{
     stroke-dasharray: 50% 50%;
     stroke: #ffd700;
+    fill: none;
+
 }
 
 .peritoneum
 .mesorectal_fascia
 {
+    stroke-dasharray: 50% 50%;
     stroke: #90ee90;
+    fill: none;
+
 }

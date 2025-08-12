@@ -91,13 +91,13 @@ class Settings(BaseSettings):
                 "fill": "#ffe5b4",
                 "stroke": "none",
                 "stroke-opacity": 1,
-                "stroke-width": '0.7%'
+                "stroke-width": '3px'
             },
             'Слой 1': {
                 "fill": "none",
                 "stroke": "#000000",
                 "stroke-opacity": 1,
-                "stroke-width": '0.5%'
+                "stroke-width": '3px'
             }
         }
 
