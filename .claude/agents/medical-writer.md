@@ -62,7 +62,7 @@ Decision: If sufficient relevant sources found → Proceed to Phase 3
 
 #### Step 2: Secondary Source (Full Zotero Library)
 ```
-Action: Expand search to entire Zotero library
+Action: Expand search to entire Zotero library.
 Tools: mcp__zotero-mcp__zotero_advanced_search, mcp__zotero-mcp__zotero_semantic_search
 Output: List all citation keys from outside default collection
 Format: "Non-default collection keys: [@key1], [@key2], [@key3]"
