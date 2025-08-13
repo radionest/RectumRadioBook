@@ -3,7 +3,7 @@ build/RectumRadioBook.docx
 mdsplit.py
 *.~lock*
 *.log
-*.docx
+/*/*.docx
 img/anatomy/fig2/Thumbs.db
 
 /.quarto/
