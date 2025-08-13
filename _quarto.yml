@@ -3,9 +3,9 @@ project:
   output-dir: _book
   execute-dir: project
   pre-render: 
-    - .venv/bin/python scripts/prepare_images_prerender.py
+    - python scripts/prepare_images_prerender.py
   post-render:
-    - .venv/bin/python scripts/clean_generated_images.py
+    - python scripts/clean_generated_images.py
 filters:
   - /home/nest/.local/bin/quarto_tools/pandoc-crossref
 
