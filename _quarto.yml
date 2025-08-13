@@ -51,6 +51,18 @@ format:
     code-fold: true
     code-summary: Показать код
     lang: ru
+    include-in-header:
+      text: "<style>\n.download-docx {\n  position: fixed;\n  top: 10px;\n  right:\
+        \ 10px;\n  z-index: 1000;\n  background: #007bff;\n  color: white;\n  padding:\
+        \ 10px 20px;\n  border-radius: 5px;\n  text-decoration: none;\n  font-weight:\
+        \ bold;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.2);\n}\n.download-docx:hover\
+        \ {\n  background: #0056b3;\n  color: white;\n  text-decoration: none;\n}\n\
+        @media (max-width: 768px) {\n  .download-docx {\n    position: static;\n \
+        \   display: block;\n    margin: 10px auto;\n    text-align: center;\n   \
+        \ width: fit-content;\n  }\n}\n</style>\n"
+    include-after-body:
+      text: "<a href=\"RectumRadioBook.docx\" class=\"download-docx\" download>\n\
+        \  \U0001F4E5 Скачать DOCX\n</a>\n"
   docx:
     toc: true
     toc-depth: 3
