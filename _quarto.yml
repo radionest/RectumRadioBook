@@ -61,7 +61,7 @@ format:
         \   display: block;\n    margin: 10px auto;\n    text-align: center;\n   \
         \ width: fit-content;\n  }\n}\n</style>\n"
     include-after-body:
-      text: "<a href=\"RectumRadioBook.docx\" class=\"download-docx\" download>\n\
+      text: "<a href=\"Учебное-пособие-по-лучевой-диагностике-рака-прямой-кишки.docx\" class=\"download-docx\" download>\n\
         \  \U0001F4E5 Скачать DOCX\n</a>\n"
   docx:
     toc: true

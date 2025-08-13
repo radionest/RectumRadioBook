@@ -49,8 +49,6 @@ jobs:
           CI: true
         run: |
           quarto render
-          # Ensure DOCX is in the _book directory for deployment
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
