@@ -7,7 +7,7 @@ project:
   post-render:
     - python scripts/clean_generated_images.py
 filters:
-  - /home/nest/.local/bin/quarto_tools/pandoc-crossref
+  - pandoc-crossref
 
 crossref:
   fig-title: "Рисунок"
