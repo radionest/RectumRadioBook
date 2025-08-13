@@ -2,5 +2,13 @@
 lxml>=4.9.0
 Pillow>=9.0.0
 
+# Configuration and validation
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+tomli>=2.0.0
+
+# Markdown processing
+markdown-it-py>=3.0.0
+
 # For better error messages and development
 pathlib>=1.0.1
