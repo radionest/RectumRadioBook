@@ -45,6 +45,8 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render Quarto Book
+        env:
+          CI: true
         run: |
           quarto render --to html
 

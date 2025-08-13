@@ -7,6 +7,10 @@ from pathlib import Path
 # Add the scripts directory to Python path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+# Setup pandoc-crossref path before anything else
+from setup_crossref import main as setup_crossref
+setup_crossref()
+
 # Import functions from prepare_images
 from prepare_images import update_all_annotations, load_styles
 from config import load_config
