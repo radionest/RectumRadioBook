@@ -32,21 +32,24 @@ fi
 
 print_info "Starting conversion to DOCX..."
 
-# List of markdown files in order
+# List of Quarto markdown files in order
 MARKDOWN_FILES=(
-    "$SRC_DIR/Introduction.md"
-    "$SRC_DIR/Rectum-Anatomy.md"
-    "$SRC_DIR/Research-Methodology.md"
-    "$SRC_DIR/Tumor-Detection.md"
-    "$SRC_DIR/Tumor-Detection/Classification.md"
-    "$SRC_DIR/Rectal-Cancer-Staging.md"
-    "$SRC_DIR/Rectal-Cancer-Staging/T-Staging.md"
-    "$SRC_DIR/Rectal-Cancer-Staging/N-Staging.md"
-    "$SRC_DIR/Rectal-Cancer-Staging/Local-Extent-Assessment.md"
-    "$SRC_DIR/Rectal-Cancer-Staging/Circumferential-Resection-Margin-Assessment.md"
-    "$SRC_DIR/Rectal-Cancer-Staging/Extramural-Venous-Invasion-Assessment.md"
-    "$SRC_DIR/Structured-Report-Primary-MRI-Staging.md"
-    "$SRC_DIR/Bibliography.md"
+    "$SRC_DIR/Introduction.qmd"
+    "$SRC_DIR/Rectum-Anatomy.qmd"
+    "$SRC_DIR/Scan-Methodology.qmd"
+    "$SRC_DIR/Tumor-Detection.qmd"
+    "$SRC_DIR/Tumor-Detection/Classification.qmd"
+    "$SRC_DIR/Tumor-Detection/MRI.qmd"
+    "$SRC_DIR/Tumor-Detection/CT-Detection-Rectal-Cancer.qmd"
+    "$SRC_DIR/Rectal-Cancer-Staging.qmd"
+    "$SRC_DIR/Rectal-Cancer-Staging/T-Staging.qmd"
+    "$SRC_DIR/Rectal-Cancer-Staging/N-Staging.qmd"
+    "$SRC_DIR/Rectal-Cancer-Staging/Local-Extent-Assessment.qmd"
+    "$SRC_DIR/Rectal-Cancer-Staging/Circumferential-Resection-Margin-Assessment.qmd"
+    "$SRC_DIR/Rectal-Cancer-Staging/Extramural-Venous-Invasion-Assessment.qmd"
+    "$SRC_DIR/Structured-Report-Primary-MRI-Staging.qmd"
+    "$SRC_DIR/Abbrevations.qmd"
+    "$SRC_DIR/Bibliography.qmd"
 )
 
 # Check if all files exist
@@ -101,19 +104,6 @@ if [ ${PIPESTATUS[0]} -eq 0 ]; then
 else
     print_error "Conversion failed. Check $OUTPUT_DIR/build.log for details."
     exit 1
-fi
-
-# Additional conversions (optional)
-read -p "Do you want to create a PDF version as well? (y/n): " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    print_info "Creating PDF version..."
-    pandoc "${PANDOC_OPTIONS[@]}" -o "$OUTPUT_DIR/RectumRadioBook.pdf" "${MARKDOWN_FILES[@]}"
-    if [ $? -eq 0 ]; then
-        print_success "PDF created successfully!"
-    else
-        print_error "PDF creation failed."
-    fi
 fi
 
 print_success "Build process completed!"
