@@ -80,11 +80,11 @@ Sigmoid take-off представляет собой точку перехода
 
 :::{#fig-peritoneal-fold}
 
-![МРТ, Т2-ВИ в сагиттальной плоскости](/img/anatomy/fig2/image51.jpg){#fig-peritoneal-fold-1 width=48%}
+![МРТ, Т2-ВИ в сагиттальной плоскости](/img/anatomy/fig2/image51.png){#fig-peritoneal-fold-1 width=48%}
 
 ![МРТ, Т2-ВИ в сагиттальной плоскости (аннотированная)](/img/anatomy/fig2/image51_annotated.png){#fig-peritoneal-fold-1-ann width=48%}
 
-![МРТ, Т2-ВИ в аксиальной плоскости](/img/anatomy/fig2/image37.jpg){#fig-peritoneal-fold-2 width=48%}
+![МРТ, Т2-ВИ в аксиальной плоскости](/img/anatomy/fig2/image37.png){#fig-peritoneal-fold-2 width=48%}
 
 ![МРТ, Т2-ВИ в аксиальной плоскости (аннотированная)](/img/anatomy/fig2/image37_annotated.png){#fig-peritoneal-fold-2-ann width=48%}
 
