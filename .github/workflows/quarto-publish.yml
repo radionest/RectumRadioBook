@@ -49,6 +49,9 @@ jobs:
           CI: true
         run: |
           quarto render --to html
+          quarto render --to docx
+          # Ensure DOCX is in the _book directory for deployment
+          ls -la _book/*.docx || echo "Checking for DOCX files..."
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
