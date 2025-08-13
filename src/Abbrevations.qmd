@@ -102,8 +102,6 @@ RS -- Recto-Sigmoid (ректосигмоидный отдел по японск
 
 SAR -- Saturation Recovery (насыщение-восстановление)
 
-SCC -- Squamous Cell Carcinoma (плоскоклеточный рак)
-
 TNM -- Tumor, Nodes, Metastasis (опухоль, лимфатические узлы, метастазы)
 
 TRG -- Tumor Regression Grade (степень регрессии опухоли)
