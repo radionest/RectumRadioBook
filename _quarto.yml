@@ -58,7 +58,7 @@ format:
         repo-id: R_kgDOPKIwPg
         category: Announcements
         category-id: DIC_kwDOPKIwPs4CuIh1
-        mapping: pathname
+        mapping: url
         reactions-enabled: true
         input-position: bottom
         theme: light
