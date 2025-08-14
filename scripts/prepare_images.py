@@ -1,6 +1,8 @@
+from functools import partial
 import os
 from lxml import etree
 import subprocess
+import multiprocessing
 import re
 from pathlib import Path
 from typing import Dict, Any, Optional
@@ -301,7 +303,6 @@ def svg_to_png_by_images(
         )
         print(f"Exported image: {image_name} (id: {image_object.attrib['id']})")
 
-
 def process_annotation_file(
     svg_file_path, config: Settings, styles: Dict[str, Dict[str, Any]]
 ):
@@ -315,13 +316,6 @@ def process_annotation_file(
         svg_file_path, styles, nsmap, output_postfix=config.processing.styled_postfix
     )
 
-    # Export styled SVG to PNG with annotated suffix
-    # export_svg_to_png(
-    #     styled_svg_path,
-    #     inkscape_executable=config.inkscape.executable,
-    #     dpi=config.inkscape.default_dpi,
-    #     suffix=config.processing.annotated_suffix,
-    # )
 
     # If the SVG contains embedded images, export them separately
     try:
@@ -345,6 +339,7 @@ def update_all_annotations(
     """Find and process all annotation SVG files in the project"""
     annotation_patterns = config.processing.annotation_patterns
 
+    annotation_files = []
     for root, dirs, files in os.walk(base_folder):
         for file in files:
             if (
@@ -352,10 +347,18 @@ def update_all_annotations(
                 and config.processing.styled_postfix not in file
             ):
                 file_path = os.path.join(root, file)
-                try:
-                    process_annotation_file(file_path, config, styles)
-                except Exception as e:
-                    print(f"Error processing {file_path}: {e}")
+                annotation_files.append(file_path)
+    
+    worker = partial(process_annotation_file, config=config, styles=styles)
+    
+    num_processes = multiprocessing.cpu_count()
+    if config.processing.max_processes > 0:
+        num_processes = min(num_processes, config.processing.max_processes)
+    
+    print(f'Run image preparation with {num_processes} processes')
+    
+    with multiprocessing.Pool(processes=num_processes) as pool:
+        pool.map(worker, annotation_files)
 
 
 if __name__ == "__main__":

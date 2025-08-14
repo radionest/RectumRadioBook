@@ -26,6 +26,7 @@ class ProcessingConfig(BaseModel):
     ])
     styled_postfix: str = "styled"
     annotated_suffix: str = "annotated"
+    max_processes: int = 16
 
 
 class ExportConfig(BaseModel):
