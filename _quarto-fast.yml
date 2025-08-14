@@ -23,7 +23,6 @@ book:
   - part: Выявление опухоли
     chapters:
     - src/Tumor-Detection.qmd
-    - src/Tumor-Detection/Classification.qmd
     - src/Tumor-Detection/MRI.qmd
     - src/Tumor-Detection/CT-Detection-Rectal-Cancer.qmd
   - part: Стадирование рака прямой кишки
