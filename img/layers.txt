@@ -5,6 +5,9 @@
 - submucosa: Подслизистый слой
 - muscularis: Мышечный слой
 - serosa: Серозная оболочка
+- наружный сфинктер: external_sphincter
+- внутренний сфинктер: internal_sphincter
+- межсфинктерное пространство: intersphincteric_space
 
 2. Опухолевые структуры:
 - tumor: Контур опухоли
