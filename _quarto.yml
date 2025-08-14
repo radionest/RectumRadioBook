@@ -18,9 +18,9 @@ book:
   language: ru
   chapters:
   - index.qmd
+  - src/Abbrevations.qmd
   - part: Основы
     chapters:
-    - src/Abbrevations.qmd
     - src/Introduction.qmd
     - src/Rectum-Anatomy.qmd
     - src/Scan-Methodology.qmd
