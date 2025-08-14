@@ -21,6 +21,7 @@ class Comment:
     author: str
     date: str
     text: str
+    commented_text: str  # Text between comment-start and comment-end
     section: str
     line_number: int
     context: str = ""
@@ -140,31 +141,79 @@ class CommentExtractor:
         # Get line number
         line_number = node.token.map[0] + 1 if node.token.map else 0
         
-        # Get the raw content from source
+        # Get the raw content from source - need broader context for multiline
         if node.token.map:
-            start_line = node.token.map[0]
-            end_line = node.token.map[1]
+            start_line = max(0, node.token.map[0] - 5)  # Get more context
+            end_line = min(len(source_text.split('\n')), node.token.map[1] + 5)
             lines = source_text.split('\n')
             raw_content = '\n'.join(lines[start_line:end_line])
         else:
             raw_content = self._extract_text(node)
         
-        # Find comment patterns
+        # Find comment patterns including multiline comments
+        # Pattern now handles multiline content within brackets
         comment_pattern = r'\[([^\]]*?)\]\{\.comment-start\s+id="(\d+)"\s+author="([^"]+)"\s+date="([^"]+)"\}'
         
-        for match in re.finditer(comment_pattern, raw_content):
+        for match in re.finditer(comment_pattern, raw_content, re.DOTALL):
             text = match.group(1)
             comment_id = match.group(2)
             author = match.group(3)
             date = match.group(4)
             
-            # Extract context (surrounding text)
-            start_pos = max(0, match.start() - 50)
-            end_pos = min(len(raw_content), match.end() + 100)
-            context = raw_content[start_pos:end_pos]
+            # Find the end marker for this comment and extract commented text
+            end_pattern = rf'\[.*?\]\{{\.comment-end\s+id="{comment_id}"\}}'
+            end_match = re.search(end_pattern, raw_content[match.end():], re.DOTALL)
             
-            # Clean up context
-            context = re.sub(r'\[.*?\]\{\.comment-[^}]+\}', '', context)
+            # Extract the text between comment-start and comment-end
+            commented_text = ""
+            if end_match:
+                # Text between start and end markers
+                commented_text = raw_content[match.end():match.end() + end_match.start()]
+                # Clean up the text inside the brackets before comment-end
+                commented_text = re.sub(r'\[.*?\]\{', '[', commented_text)
+                commented_text = ' '.join(commented_text.split())
+                comment_end_pos = match.end() + end_match.end()
+            else:
+                comment_end_pos = match.end()
+            
+            # Now find the complete sentence containing the entire comment
+            comment_start_pos = match.start()
+            
+            # Look for sentence boundaries before the comment
+            # Search backwards for sentence start (. ! ? or beginning of text)
+            sentence_start = 0
+            for i in range(comment_start_pos - 1, -1, -1):
+                if i == 0:
+                    sentence_start = 0
+                    break
+                if raw_content[i] in '.!?':
+                    # Check if followed by space and capital letter (new sentence)
+                    if i + 1 < len(raw_content):
+                        remaining = raw_content[i+1:min(i+10, len(raw_content))]
+                        if re.match(r'^\s+[А-ЯA-Z]', remaining):
+                            sentence_start = i + 1
+                            break
+            
+            # Look for sentence boundaries after the comment
+            # Search forward for sentence end (. ! ? followed by space and capital or end)
+            sentence_end = len(raw_content)
+            for i in range(comment_end_pos, len(raw_content)):
+                if raw_content[i] in '.!?':
+                    # Check if this is end of sentence
+                    if i + 1 >= len(raw_content):
+                        sentence_end = i + 1
+                        break
+                    remaining = raw_content[i+1:min(i+10, len(raw_content))]
+                    if re.match(r'^\s+[А-ЯA-Z]', remaining) or re.match(r'^\s*$', remaining):
+                        sentence_end = i + 1
+                        break
+            
+            # Extract the full sentence
+            full_sentence = raw_content[sentence_start:sentence_end].strip()
+            
+            # Clean up the sentence from comment markers but keep the original text
+            context = re.sub(r'\[.*?\]\{\.comment-start[^}]+\}', '', full_sentence, flags=re.DOTALL)
+            context = re.sub(r'\[.*?\]\{\.comment-end[^}]+\}', '', context, flags=re.DOTALL)
             context = ' '.join(context.split())
             
             comment = Comment(
@@ -172,6 +221,7 @@ class CommentExtractor:
                 author=author,
                 date=date,
                 text=text,
+                commented_text=commented_text,
                 section=self.current_section,
                 line_number=line_number,
                 context=context
@@ -206,10 +256,10 @@ def generate_report(comments: list[Comment]) -> str:
         
         for comment in sorted(section_comments, key=lambda c: c.line_number):
             report_lines.append(f"\n### {comment.id}. Line {comment.line_number}")
-            report_lines.append(f"**Author:** {comment.author}")
-            report_lines.append(f"**Date:** {comment.date}")
             report_lines.append(f"**Comment:** {comment.text}")
-            report_lines.append(f"**Context:** ...{comment.context}...")
+            if comment.commented_text:
+                report_lines.append(f"**Commented text:** {comment.commented_text}")
+            report_lines.append(f"**Full sentence:** {comment.context}")
             report_lines.append("")
     
     return "\n".join(report_lines)
@@ -218,7 +268,7 @@ def generate_report(comments: list[Comment]) -> str:
 def main() -> None:
     """Main entry point."""
     # Default input file
-    input_file = Path("/home/nest/Documents/RectumRadioBook/corrections/burovik_1.md")
+    input_file = Path("/home/nest/Documents/RectumRadioBook/corrections/burovik2.md")
     
     # Allow command line override
     if len(sys.argv) > 1:
