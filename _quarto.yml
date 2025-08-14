@@ -52,6 +52,17 @@ format:
     code-fold: true
     code-summary: Показать код
     lang: ru
+    comments:
+      giscus:
+        repo: radionest/RectumRadioBook
+        repo-id: R_kgDOPKIwPg
+        category: Announcements
+        category-id: DIC_kwDOPKIwPs4CuIh1
+        mapping: pathname
+        reactions-enabled: true
+        input-position: bottom
+        theme: light
+        language: ru
     include-in-header:
       text: "<style>\n.download-docx {\n  position: fixed;\n  top: 10px;\n  right:\
         \ 10px;\n  z-index: 1000;\n  background: #007bff;\n  color: white;\n  padding:\
