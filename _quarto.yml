@@ -48,6 +48,7 @@ format:
     toc: true
     toc-depth: 3
     number-sections: true
+    anchor-sections: true
     code-fold: true
     code-summary: Показать код
     lang: ru
