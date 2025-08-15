@@ -40,7 +40,7 @@ book:
   - src/Structured-Report-Primary-MRI-Staging.qmd
   - src/Bibliography.qmd
 bibliography: references.bib
-csl: vancouver.csl
+csl: vancouver-ru-first.csl
 format:
   html:
     theme: cosmo
