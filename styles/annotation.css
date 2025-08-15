@@ -40,7 +40,7 @@
 }
 
 .tumor_core {
-    fill: #dc143c;
+    fill: #940202;
     fill-opacity: 0.7;
     stroke: none;
 }
@@ -53,7 +53,7 @@
 }
 
 .tumor_part_2 {
-    fill: #ff5252;
+    fill: #ffae52;
     fill-opacity: 0.5;
     stroke: #dc143c;
     stroke-width: 0.5%;
