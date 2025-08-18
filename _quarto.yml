@@ -42,7 +42,7 @@ book:
   - src/Bibliography.qmd
   - src/rectal-cancer-tests-formatted.md
 bibliography: references.bib
-csl: vancouver-ru-first.csl
+csl: gost-r-7-0-5-2008-numeric-alphabetical.csl
 format:
   html:
     theme: cosmo
