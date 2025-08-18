@@ -21,7 +21,7 @@
     stroke-width: 0.5%;
 }
 
-.sphincter,
+.sphincter, 
 .muscularis {
     fill: #bf1506;
     fill-opacity: 0.6;
@@ -39,6 +39,7 @@
 .mesorectal_fascia,
 .peritoneum,
 .serosa {
+    fill: none;
     stroke: #7acb16;
     stroke-width: 0.5%;
 }

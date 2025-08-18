@@ -23,11 +23,11 @@ def parse_css_file(css_path):
     # Remove comments
     css_content = re.sub(r"/\*.*?\*/", "", css_content, flags=re.DOTALL)
 
-    # Pattern to match CSS rules
-    pattern = r"\.([a-zA-Z_][a-zA-Z0-9_]*)\s*\{([^}]+)\}"
+    # Pattern to match CSS rules (including multiple selectors separated by commas)
+    pattern = r"((?:\.[a-zA-Z_][a-zA-Z0-9_]*\s*,?\s*)+)\s*\{([^}]+)\}"
 
     for match in re.finditer(pattern, css_content):
-        class_name = match.group(1)
+        selectors = match.group(1)
         properties = match.group(2)
 
         style_dict = {}
@@ -54,12 +54,14 @@ def parse_css_file(css_path):
             else:
                 style_dict[prop_name] = prop_value
 
-        # Map class names to the expected format
-        # Convert layer_1 to 'Слой 1' for backward compatibility
-        if class_name == "layer_1":
-            styles["Слой 1"] = style_dict
-        else:
-            styles[class_name] = style_dict
+        # Process each selector in the group
+        for selector in re.findall(r"\.([a-zA-Z_][a-zA-Z0-9_]*)", selectors):
+            # Map class names to the expected format
+            # Convert layer_1 to 'Слой 1' for backward compatibility
+            if selector == "layer_1":
+                styles["Слой 1"] = style_dict.copy()
+            else:
+                styles[selector] = style_dict.copy()
 
     return styles
 
