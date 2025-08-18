@@ -41,6 +41,7 @@ book:
     - src/Rectal-Cancer-Staging/Circumferential-Resection-Margin-Assessment.qmd
   - src/Structured-Report-Primary-MRI-Staging.qmd
   - src/Bibliography.qmd
+  - src/rectal-cancer-tests-formatted.md
 bibliography: references.bib
 csl: vancouver-ru-first.csl
 format:

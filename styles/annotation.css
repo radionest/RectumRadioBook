@@ -32,11 +32,11 @@
 }
 
 /* Tumor structures */
+.emvi_node
 .tumor {
-    fill: none;
-    stroke: #dc143c;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
+    fill: #dc143c;
+    stroke: none;
+    fill-opacity: 0.7;
 }
 
 .tumor_core {
@@ -91,9 +91,8 @@
 
 /* Vascular structures */
 .vessels {
-    fill: none;
-    stroke: #4169e1;
-    stroke-opacity: 1;
+    fill: #4169e1;
+    stroke: none;
     stroke-width: 0.7%;
 }
 
@@ -118,10 +117,50 @@
     fill: none;
     stroke: #ff1493;
     stroke-opacity: 1;
-    stroke-width: 0.7%;
+    stroke-width: 0.3%;
     stroke-dasharray: 3,3;
     stroke-dashoffset: 0;
 }
+
+.distance_1 {
+    fill: none;
+    stroke: #14ff9d;
+    stroke-opacity: 1;
+    stroke-width: 0.3%;
+    stroke-dasharray: 3,3;
+    stroke-dashoffset: 0;
+}
+
+.distance_2{
+    fill: none;
+    stroke: #ffeb14;
+    stroke-opacity: 1;
+    stroke-width: 0.3%;
+    stroke-dasharray: 3,3;
+    stroke-dashoffset: 0;
+}
+
+
+.margo_analis{
+    fill: none;
+    stroke: #e714ff;
+    stroke-opacity: 1;
+    stroke-width: 0.3%;
+    stroke-dasharray: 3,3;
+    stroke-dashoffset: 0;
+}
+
+.tumor_border{
+    fill: none;
+    stroke: #d63131;
+    stroke-opacity: 1;
+    stroke-width: 0.3%;
+    stroke-dasharray: 3,3;
+    stroke-dashoffset: 0;
+}
+
+
+
 
 .sphincter {
     fill: #ffd700;
@@ -266,3 +305,4 @@
     fill: none;
 
 }
+
