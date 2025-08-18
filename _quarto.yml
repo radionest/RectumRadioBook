@@ -11,6 +11,7 @@ crossref:
   fig-title: Рисунок
   fig-prefix: рис.
   fig-labels: arabic
+  subref-labels: cyrrillic
 book:
   title: Учебное пособие по лучевой диагностике рака прямой кишки
   author: Автор
