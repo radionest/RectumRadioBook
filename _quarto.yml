@@ -9,8 +9,10 @@ project:
 filters:
 - /home/nest/.local/bin/quarto_tools/pandoc-crossref
 crossref:
+  chapters: false
   fig-title: Рисунок
   fig-prefix: рис.
+  fig-labels: arabic
 book:
   title: Учебное пособие по лучевой диагностике рака прямой кишки
   author: Автор
@@ -39,6 +41,7 @@ book:
     - src/Rectal-Cancer-Staging/Circumferential-Resection-Margin-Assessment.qmd
   - src/Structured-Report-Primary-MRI-Staging.qmd
   - src/Bibliography.qmd
+  - src/rectal-cancer-tests-formatted.md
 bibliography: references.bib
 csl: vancouver-ru-first.csl
 format:
@@ -46,7 +49,7 @@ format:
     theme: cosmo
     toc: true
     toc-depth: 3
-    number-sections: true
+    number-sections: false
     anchor-sections: true
     code-fold: true
     code-summary: Показать код
@@ -77,7 +80,7 @@ format:
   docx:
     toc: true
     toc-depth: 3
-    number-sections: true
+    number-sections: false
     reference-doc: custom-reference-doc.docx
     lang: ru
 lang: ru
