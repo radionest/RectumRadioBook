@@ -1,40 +1,57 @@
 /* Anatomical layers */
+
+.uterus,
+.prostate,
+.layer_1,
+.normal_fill,
 .mucosa {
     fill: #ffcc99;
     fill-opacity: 0.6;
-    stroke: #ff9966;
-    stroke-opacity: 1;
+    stroke:none;
     stroke-width: 0.5%;
 }
 
+.seminal_vesicles,
+.bladder,
+.normal,
 .submucosa {
     fill: #66ccff;
     fill-opacity: 0.6;
-    stroke: #3399ff;
-    stroke-opacity: 1;
+    stroke: none;
     stroke-width: 0.5%;
 }
 
+.sphincter,
 .muscularis {
-    fill: #cc6699;
+    fill: #bf1506;
     fill-opacity: 0.6;
-    stroke: #993366;
-    stroke-opacity: 1;
+    stroke: none;
     stroke-width: 0.5%;
 }
 
+.vagina,
+.lymph_node {
+    fill: #7acb16;
+    fill-opacity: 0.6;
+    stroke: none;
+}
+
+.mesorectal_fascia,
+.peritoneum,
 .serosa {
-    fill: #99ff99;
-    fill-opacity: 0.6;
-    stroke: #66cc66;
-    stroke-opacity: 1;
+    stroke: #7acb16;
     stroke-width: 0.5%;
 }
 
+.vessels {
+    fill: #4169e1;
+    stroke: none;
+    stroke-width: 0.7%;
+}
 /* Tumor structures */
-.emvi_node
+.emvi_node,
 .tumor {
-    fill: #dc143c;
+    fill: #bb1367;
     stroke: none;
     fill-opacity: 0.7;
 }
@@ -52,6 +69,7 @@
     stroke-width: 0.5%;
 }
 
+.lymph_node_necrosis,
 .tumor_part_2 {
     fill: #ffae52;
     fill-opacity: 0.5;
@@ -66,53 +84,15 @@
     stroke-width: 0.5%;
 }
 
-/* Lymphatic system */
-.lymph_node {
-    fill: #90ee90;
-    fill-opacity: 0.7;
-    stroke: #228b22;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
-
-.lymph_node_necrosis {
-    fill: #8b0000;
-    fill-opacity: 0.7;
-    stroke: #dc143c;
-    stroke-width: 0.5%;
-}
-
-.lymph_node_part {
-    fill: #7cfc00;
-    fill-opacity: 0.5;
-    stroke: #228b22;
-    stroke-width: 0.5%;
-}
-
-/* Vascular structures */
-.vessels {
-    fill: #4169e1;
-    stroke: none;
-    stroke-width: 0.7%;
-}
-
-/* Normal structures */
-.normal {
-    fill: none;
-    stroke: #32cd32;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-    stroke-dasharray: 1,1;
-    stroke-dashoffset: 0;
-}
-
-.normal_fill {
-    fill: #32cd32;
-    fill-opacity: 0.3;
-    stroke: none;
-}
 
 /* Anatomical landmarks */
+.orientation_of_slices{
+    stroke-dasharray: 50% 50%;
+    stroke: #ffd700;
+    fill: none;
+
+}
+
 .dentate_line {
     fill: none;
     stroke: #ff1493;
@@ -160,24 +140,7 @@
 }
 
 
-
-
-.sphincter {
-    fill: #ffd700;
-    fill-opacity: 0.6;
-    stroke: #ffa500;
-    stroke-width: 0.5%;
-}
-
-.peritoneum {
-    fill: none;
-    stroke: #9370db;
-    stroke-opacity: 1;
-    stroke-width: 0.7%;
-    stroke-dasharray: 2,2;
-    stroke-dashoffset: 0;
-}
-
+.levator_ani,
 .muscle_1 {
     fill: #ff6633;
     fill-opacity: 0.5;
@@ -186,6 +149,7 @@
     stroke-opacity: 1;
 }
 
+.puborectalis,
 .muscle_2 {
     fill: #3366ff;
     fill-opacity: 0.5;
@@ -194,6 +158,7 @@
     stroke-opacity: 1;
 }
 
+.anal_canal,
 .muscle_3 {
     fill: #66ff33;
     fill-opacity: 0.5;
@@ -210,99 +175,8 @@
     stroke-opacity: 1;
 }
 
-/* Default layer */
-.layer_1 {
-    fill: none;
-    stroke: #000000;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
 
-.orientation_of_slices{
-    stroke-dasharray: 50% 50%;
-    stroke: #ffd700;
-    fill: none;
 
-}
 
-/* Bladder */
-.bladder {
-    fill: #ffcc00;
-    fill-opacity: 0.6;
-    stroke: #ff9900;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
 
-/* Prostate */
-.prostate {
-    fill: #6666ff;
-    fill-opacity: 0.6;
-    stroke: #3333cc;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
-
-/* Uterus */
-.uterus {
-    fill: #ff66cc;
-    fill-opacity: 0.6;
-    stroke: #cc3399;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
-
-/* Anal canal */
-.anal_canal {
-    fill: #99ccff;
-    fill-opacity: 0.6;
-    stroke: #6699ff;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
-
-/* Levator ani muscle */
-.levator_ani {
-    fill: #ccff99;
-    fill-opacity: 0.5;
-    stroke: #99cc66;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
-
-/* Puborectalis muscle */
-.puborectalis {
-    fill: #ffcc99;
-    fill-opacity: 0.5;
-    stroke: #cc9966;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
-
-/* Vagina */
-.vagina {
-    fill: #ff99cc;
-    fill-opacity: 0.6;
-    stroke: #cc6699;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
-
-/* Seminal vesicles */
-.seminal_vesicles {
-    fill: #99cccc;
-    fill-opacity: 0.6;
-    stroke: #669999;
-    stroke-opacity: 1;
-    stroke-width: 0.5%;
-}
-
-.peritoneum
-.mesorectal_fascia
-{
-    stroke-dasharray: 50% 50%;
-    stroke: #90ee90;
-    fill: none;
-
-}
 
