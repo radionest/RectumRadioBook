@@ -126,7 +126,7 @@ Sigmoid take-off представляет собой точку перехода
 
 :::{#fig-anal-canal-anatomy}
 
-![Схематичное изображение анатомии анального канала](/img/scheme/anal_canal.svg){#fig-anal-canal-anatomy-1 width=90%}
+![Схематичное изображение анатомии анального канала](/img/scheme/anal_canal_styled.svg){#fig-anal-canal-anatomy-1 width=90%}
 
 ![ВР-МРТ, Т2-ВИ по длинной оси анального канала](/img/anatomy/fig6/image20.png){#fig-anal-canal-anatomy-2 width=48%}
 

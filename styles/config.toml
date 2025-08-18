@@ -17,7 +17,8 @@ annotation_patterns = [
     "annotation.svg",
     "annotation_mri.svg", 
     "annotation_ct.svg",
-    "annotatiom_mri.svg"
+    "annotatiom_mri.svg",
+    "annotation_"
 ]
 
 # Postfix for styled files

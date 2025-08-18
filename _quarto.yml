@@ -4,8 +4,6 @@ project:
   execute-dir: project
   pre-render:
   - python scripts/prepare_images_prerender.py
-  post-render:
-  - python scripts/clean_generated_images.py
 filters:
 - /home/nest/.local/bin/quarto_tools/pandoc-crossref
 crossref:

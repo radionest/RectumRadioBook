@@ -29,6 +29,7 @@
     stroke-width: 0.5%;
 }
 
+.intersphincteric_space,
 .vagina,
 .lymph_node {
     fill: #7acb16;
@@ -69,6 +70,7 @@
     stroke: #dc143c;
     stroke-width: 0.5%;
 }
+
 
 .lymph_node_necrosis,
 .tumor_part_2 {
@@ -151,6 +153,7 @@
 }
 
 .puborectalis,
+.external_sphincter,
 .muscle_2 {
     fill: #3366ff;
     fill-opacity: 0.5;
@@ -168,6 +171,7 @@
     stroke-opacity: 1;
 }
 
+.internal_sphincter,
 .muscle_4 {
     fill: #ff3366;
     fill-opacity: 0.5;

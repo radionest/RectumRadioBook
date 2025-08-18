@@ -22,7 +22,9 @@ class ProcessingConfig(BaseModel):
         "annotation.svg",
         "annotation_mri.svg",
         "annotation_ct.svg",
-        "annotatiom_mri.svg"
+        "annotatiom_mri.svg",
+        "annotation_anal_canal.svg"
+         
     ])
     styled_postfix: str = "styled"
     annotated_suffix: str = "annotated"
