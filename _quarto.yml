@@ -11,6 +11,7 @@ crossref:
   fig-title: Рисунок
   fig-prefix: рис.
   fig-labels: arabic
+  subref-labels: alpha А
 book:
   title: Учебное пособие по лучевой диагностике рака прямой кишки
   author: Автор
@@ -38,10 +39,9 @@ book:
     - src/Rectal-Cancer-Staging/Extramural-Venous-Invasion-Assessment.qmd
     - src/Rectal-Cancer-Staging/Circumferential-Resection-Margin-Assessment.qmd
   - src/Structured-Report-Primary-MRI-Staging.qmd
-  - src/Bibliography.qmd
   - src/rectal-cancer-tests-formatted.md
 bibliography: references.bib
-csl: vancouver-ru-first.csl
+csl: gost-r-7-0-5-2008-numeric-alphabetical.csl
 format:
   html:
     theme: cosmo
