@@ -74,7 +74,7 @@
   </macro>
   <macro name="language-sort">
     <choose>
-      <if variable="note" match="any" values="ru rus RU">
+      <if variable="note">
         <text value="AA00"/>
       </if>
       <else>
