@@ -3,9 +3,10 @@
 .uterus,
 .prostate,
 .layer_1,
+.spicula,
 .normal_fill,
 .mucosa {
-    fill: #ffcc99;
+    fill: #e88a2c;
     fill-opacity: 0.6;
     stroke:none;
     stroke-width: 0.5%;

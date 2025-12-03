@@ -43,3 +43,6 @@ img/anatomy/fig1/Thumbs.db
 *contex*.png
 *styled*
 build/build.log
+
+**/*.quarto_ipynb
+questions.docx
